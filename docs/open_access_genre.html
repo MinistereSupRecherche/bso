@@ -1,0 +1,69 @@
+<meta charset="utf-8"/>
+<meta name="author" content="Ministère de l'Enseignement supérieur, de la Recherche et de l'Innovation"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1, shrink-to-fit=no"/>
+<meta name="robots" content="index, follow"/>
+<meta name"description" content="Mesurer de façon régulière l'évolution de l'accès ouvert en France à partir de données fiables, ouvertes et maîtrisées"/>
+
+<meta property="og:site_name" content="Baromètre français de la science ouverte" />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:description" content="Mesurer de façon régulière l'évolution de l'accès ouvert en France à partir de données fiables, ouvertes et maîtrisées" />
+<meta property="og:title" content="Baromètre français de la science ouverte" />
+<meta property="og:url" content="https://bso.enseignementsup-recherche.gouv.fr" />
+<meta property="og:image" content="https://bso.enseignementsup-recherche.gouv.fr/img/image_FR.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:type" content="article" />
+
+<meta name="twitter:card" content="Baromètre français de la science ouverte"/>
+<meta name="twitter:site" content="@sup_recherche"/>
+<meta name="twitter:creator" content="@dataESR"/>
+<meta name="twitter:title" content="Baromètre français de la science ouverte"/>
+<meta name="twitter:description" content="Mesurer de façon régulière l'évolution de l'accès ouvert en France à partir de données fiables, ouvertes et maîtrisée" />
+<meta name="twitter:image" content="https://bso.enseignementsup-recherche.gouv.fr/img/image_FR.png"/>
+
+<script type="text/javascript" src="./js/jquery.min.js"></script> <!-- 3.1.0 -->
+<script src="./js/highcharts.js"></script>
+<script src="./js/annotations.js"></script>
+<script src="./js/sunburst.js"></script>
+<script src="./js/exporting.js"></script>
+<script src="./js/export-data.js"></script>
+<script src="./js/accessibility.js"></script>
+
+<script src="./js/popper.min.js"></script> <!-- for tooltip -->
+<script src="./js/bootstrap.min.js"></script> <!-- 4.0 -->
+<script src="./js/202328786e.js"></script> <!--fontawesome-->
+<script src="./js/translations.js"></script>
+<script src="./js/text.js"></script>
+<script src="./js/base.js"></script>
+<script src="./js/graph.js"></script>
+
+<link rel="stylesheet" href="./css/bootstrap.min.css"> <!--4.0-->
+<link href="./css/navbar.css" rel="stylesheet">
+<link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter&display=swap">
+<link href="./css/base.css" rel="stylesheet">
+
+<title> Baromètre de la science ouverte | Ministère de l'Enseignement Supérieur, de la Recherche et de l'Innovation </title>
+
+</head>
+
+<body>
+			<div class="card" style="" id="graph_genre">
+			</div> <!--end card -->
+</body>
+
+
+<script>
+$(document).ready(function(){
+	var lang = getUrlVars()['lang']
+	if (lang === undefined) {
+		lang='FR'
+	}
+	if (lang !== 'FR' && lang !== 'EN') {
+		lang = 'FR'
+	}
+	//update_lang(lang)
+	include_graph('container_genre', 'graph_genre', 'embed_genre', 'open_access_genre.html', 'Proportion de la production scientifique française en accès ouvert par type de publication ', lang);
+	refresh_data_year(lang);
+});
+</script>
