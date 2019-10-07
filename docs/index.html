@@ -1,0 +1,446 @@
+<head>
+<meta charset="utf-8"/>
+<meta name="author" content="Ministère de l'Enseignement supérieur, de la Recherche et de l'Innovation"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1, shrink-to-fit=no"/>
+<meta name="robots" content="index, follow"/>
+<meta name"description" content="Mesurer de façon régulière l'évolution de l'accès ouvert en France à partir de données fiables, ouvertes et maîtrisées"/>
+
+<meta property="og:site_name" content="Baromètre français de la science ouverte" />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:description" content="Mesurer de façon régulière l'évolution de l'accès ouvert en France à partir de données fiables, ouvertes et maîtrisées" />
+<meta property="og:title" content="Baromètre français de la science ouverte" />
+<meta property="og:url" content="https://bso.enseignementsup-recherche.gouv.fr" />
+<meta property="og:image" content="https://bso.enseignementsup-recherche.gouv.fr/img/image_FR.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:type" content="article" />
+
+<meta name="twitter:card" content="Baromètre français de la science ouverte"/>
+<meta name="twitter:site" content="@sup_recherche"/>
+<meta name="twitter:creator" content="@dataESR"/>
+<meta name="twitter:title" content="Baromètre français de la science ouverte"/>
+<meta name="twitter:description" content="Mesurer de façon régulière l'évolution de l'accès ouvert en France à partir de données fiables, ouvertes et maîtrisée" />
+<meta name="twitter:image" content="https://bso.enseignementsup-recherche.gouv.fr/img/image_FR.png"/>
+
+<!-- Piwik -->
+<!--
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['setCustomVariable', 1, 'langue', 'FR', 'page']);
+  _paq.push(['setCustomVariable', 2, 'page', 'accueil', 'page']);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://piwik.enseignementsup-recherche.pro/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '10']);
+	  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+-->
+<!-- End Piwik Code -->
+
+<script type="text/javascript" src="./js/jquery.min.js"></script> <!-- 3.1.0 -->
+<script src="./js/highcharts.js"></script>
+<script src="./js/annotations.js"></script>
+<script src="./js/sunburst.js"></script>
+<script src="./js/exporting.js"></script>
+<script src="./js/export-data.js"></script>
+<script src="./js/accessibility.js"></script>
+
+<script src="./js/popper.min.js"></script> <!-- for tooltip -->
+<script src="./js/bootstrap.min.js"></script> <!-- 4.0 -->
+<script src="./js/202328786e.js"></script> <!--fontawesome-->
+<script src="./js/translations.js"></script>
+<script src="./js/text.js"></script>
+<script src="./js/base.js"></script>
+<script src="./js/graph.js"></script>
+
+<link rel="stylesheet" href="./css/bootstrap.min.css"> <!--4.0-->
+<link href="./css/navbar.css" rel="stylesheet">
+<link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter&display=swap">
+<link href="./css/base.css" rel="stylesheet">
+
+
+<title> Baromètre de la science ouverte | Ministère de l'Enseignement Supérieur, de la Recherche et de l'Innovation </title>
+
+</head>
+
+<body style="background-color:#f8f9fa; ">
+
+
+	<section style="position:fixed; box-shadow: 0px 15px 15px 0px #062947 !important;width:100%;z-index:1010;display:block;">
+        <nav class="navbar navbar-expand-lg navbar-light navbar-top" >
+
+		<div class="content-container">
+			<img class="logo-ministere" src="logo-ministere.svg">
+		</div>
+
+                <a class="navbar-brand bso-title" id="brand-title" href="/" > </a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+
+             <div class="collapse navbar-collapse" id="navbarsExample01">
+               <ul class="navbar-nav ml-auto">
+                 <li class="nav-item active">
+                   <a class="nav-link nav-link-bso" target="_blank" href="https://hal.archives-ouvertes.fr/hal-02141819v1" id="methodology"> Méthodologie </a>
+                 </li>
+
+		 <li class="nav-item nav-link">
+			 •
+		 </li>
+
+                 <li class="nav-item">
+                   <a class="nav-link nav-link-bso" target="_blank" href="https://data.enseignementsup-recherche.gouv.fr/explore/dataset/open-access-monitor-france/" id="open-data">Données ouvertes </a>
+                 </li>
+		 
+		 <li class="nav-item nav-link">
+			 •
+		 </li>
+
+                 <li class="nav-item">
+                   <a class="nav-link nav-link-bso" target="_blank" href="https://github.com/dataesr/publications" id="open-source"> Code ouvert </a>
+                 </li>
+               </ul>
+             </div>
+
+	     <div>
+		     <span id="lang-select-fr" class="lang-button" onclick="update_lang('FR')" style=""> FR </span> 
+		     <span> | </span>
+		     <span id="lang-select-en" class="lang-button" onclick="update_lang('EN')" style=""> EN <span>
+	     </div>
+    </nav>
+</section>
+
+<section class="container-fluid section2">
+
+	<div class="container" style="color:white;">
+		<h1 id="title-bso" class="h1-bso"></h1>
+		<h4 id='subtitle-bso'> Mesurer de façon régulière l'<span class="light-blue">évolution de l'accès ouvert en France </span> <br> à partir de données 
+			<span class="light-blue">fiables</span>, <span class="light-blue">ouvertes</span> et <span class="light-blue">maîtrisées</span></h4>
+	</div>
+
+</section>
+
+<section class="container">
+	<div class="row">
+		<div class="col-md-12" style="margin-top:20px">
+			<div class="card">
+				<div class="card-body">
+					<h3 class="card-title" style="text-align:center" id="card-title">Baromètre français de la Science Ouverte</h3>
+					<span id="intro-card">		La mise en place du baromètre de la science ouverte s'inscrit dans le cadre du <a target="_blank" href="http://cache.media.enseignementsup-recherche.gouv.fr/file/Actus/67/2/PLAN_NATIONAL_SCIENCE_OUVERTE_978672.pdf">Plan National pour la science ouverte</a> et du <a target="_blank" href="https://frama.link/planPGO">plan d’action national de la France au sein du Partenariat pour un Gouvernement Ouvert (PGO)</a>.
+						Le baromètre concerne pour le moment l'accès ouvert. </span>
+					<h6 class="card-subtitle mb-2 grey" style="margin-top:10px" id="what-is-oa">Qu'est-ce que le taux d'accès ouvert ?</h6>
+					<span id="what-is-oa-def">
+					</span>
+					<h6 class="card-subtitle mb-2 grey" style="margin-top:10px" id="update">Date de mise à jour</h6>
+					<span id="update-def">
+					</span>
+					<h6 class="card-subtitle mb-2 grey" style="margin-top:10px" id="links"> Liens</h6>
+					<a class="card-link" href="https://hal.archives-ouvertes.fr/hal-02141819v1"> <i class="far fa-sticky-note"></i> <span id="methodology2"> </span> </a></li>
+				<a class="card-link" href="https://data.enseignementsup-recherche.gouv.fr/explore/dataset/open-access-monitor-france"> <i class="fas fa-table"></i> <span id="open-data2"> Données ouvertes</span> </a></li>
+			<a class="card-link" href="https://github.com/dataesr/publications"> <i class="fab fa-github"></i> <span id="open-source2"> Code ouvert </span></a></li>
+				</div> <!-- end card-body -->
+			</div> <!--end card -->
+		</div> <!-- end col-md-12-->
+	</div> <!-- end row -->
+
+	<div class="row">
+		<div class="col-md-6" style="margin-top:20px;padding-right:5px;">
+			<div class="card" id="graph_sunburst">
+			</div> <!--end card -->
+		</div> <!-- end col-md-6-->
+
+		<div class="col-md-6" style="margin-top:20px;padding-left:5px;">
+			<div class="card" id="graph_year">
+			</div> <!--end card -->
+		</div> <!-- end col-md-6-->
+	</div> <!-- end row-->
+	
+	<div class="row">
+		<div class="col-md-6" style="margin-top:20px;padding-right:5px;">
+			<div class="card" id="graph_field">
+			</div> <!--end card -->
+		</div> <!-- end col-md-6-->
+
+		<div class="col-md-6" style="margin-top:20px;padding-left:5px;">
+			<div class="card" id="graph_publisher">
+			</div> <!--end card -->
+		</div> <!-- end col-md-6-->
+	</div> <!-- end row-->
+
+	<div class="row">
+		<div class="col-md-6" style="margin-top:20px;padding-right:5px;">
+			<div class="card" id="graph_genre">
+			</div> <!--end card -->
+		</div> <!-- end col-md-6-->
+		
+		<div class="col-md-6" style="margin-top:20px;padding-left:5px;">
+			<div class="card">
+				<div class="card-header"> <h2> <div id='faq'> Foire Aux Questions</div>  </h2> </div>
+				<div class="accordion" id="accordionExample">
+  <!-- QUESTION 0 -->
+  <div class="card">
+    <div class="card-header" id="headingZero">
+      <h5 class="mb-0">
+        <button class="btn btn-link btn-faq" type="button" data-toggle="collapse" data-target="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
+		<div id='faq-etapes'></div>
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseZero" class="collapse" aria-labelledby="headingZero" data-parent="#accordionExample">
+      <div class="card-body">
+		<div id='faq-etapes-ans'></div>
+      </div>
+    </div>
+  </div> <!-- QUESTION 0 ends-->
+
+
+  <!-- QUESTION 1 -->
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link btn-faq" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+		<div id='faq-diffosm'></div>
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+		<div id='faq-diffosm-ans'></div>
+      </div>
+    </div>
+  </div> <!-- QUESTION 1 ends-->
+
+
+  <!-- QUESTION 2 -->
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link btn-faq collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+		<div id='faq-perimetre'></div>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
+		<div id='faq-perimetre-ans'></div>
+      </div>
+    </div>
+  </div> <!-- QUESTION 2 ends-->
+  <!-- QUESTION 3 -->
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link btn-faq collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+		<div id='faq-typeacces'></div>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+		<div id='faq-typeacces-ans'></div>
+      </div>
+    </div>
+  </div> <!-- QUESTION 3 ends-->
+  <!-- QUESTION 4 -->
+  <div class="card">
+    <div class="card-header" id="headingFour">
+      <h5 class="mb-0">
+        <button class="btn btn-link btn-faq collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+		<div id='faq-update'></div>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+      <div class="card-body">
+		<div id='faq-update-ans'></div>
+      </div>
+    </div>
+  </div> <!-- QUESTION 4 ends-->
+  <!-- QUESTION 5 -->
+  <div class="card">
+    <div class="card-header" id="headingFive">
+      <h5 class="mb-0">
+        <button class="btn btn-link btn-faq collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+		<div id='faq-beyondoa'></div>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+      <div class="card-body">
+		<div id='faq-beyondoa-ans'></div>
+      </div>
+    </div>
+  </div> <!-- QUESTION 4 ends-->
+</div>
+			</div> <!--end card -->
+		</div> <!-- end col-md-6-->
+
+	</div> <!-- end row-->
+
+	<div class="row" style="margin-bottom:20px"> </div>
+
+	</div> <!-- end container -->
+</section>
+
+<section class="container-fluid footer">
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<a target="_blank" href="http://www.enseignementsup-recherche.gouv.fr/">
+				<img src="logo-ministere.svg" style="height:40px;" alt="logo" >
+				</a>
+			</div>
+			<div class="col">
+				<ul>
+					<li id='links2' class="footer-li" style="font-size:15px;margin-bottom:10px;"> Liens </li>
+					<li class="footer-li">
+						<a class="footer-a" target="_blank" href="https://hal.archives-ouvertes.fr/hal-02141819v1"> <span id="methodology3"></span> </a>
+					</li>
+					<li class="footer-li">
+						<a class="footer-a" target="_blank" href="https://github.com/dataesr/publications"> Github </a>
+					</li>
+					<li class="footer-li">
+						<a class="footer-a" target="_blank" href="https://data.enseignementsup-recherche.gouv.fr/explore/dataset/open-access-monitor-france"> <span id="open-data3"> </span> </a>
+					</li>
+				</ul>
+			</div>
+
+			
+			<div class="col">
+
+					<li id='other-links' class="footer-li" style="font-size:15px;margin-bottom:10px;"> Voir aussi </li>
+					<li class="footer-li">
+						<a class="footer-a" target="_blank" href="https://www.ouvrirlascience.fr"> <span id="ouvrir-la-science"> </span> </a>
+					</li>
+					<li class="footer-li">
+						<a class="footer-a" target="_blank" href="https://data.esr.gouv.fr"> #dataESR </a>
+					</li>
+					<li class="footer-li">
+						<a class="footer-a" target="_blank" href="https://scanr.enseignementsup-recherche.gouv.fr/"> <span id="scanr"> </span> </a>
+					</li>
+					<li class="footer-li">
+						<a class="footer-a" target="_blank" href="https://data.enseignementsup-recherche.gouv.fr/"> <span id="open-data-platform"> </span> </a>
+					</li>
+			</div>
+
+			<div class="col">
+				<div style="font-weight:normal;"><a style="color:white;" href="http://www.enseignementsup-recherche.gouv.fr/" id="mesri">Ministère de l'Enseignement Supérieur,<br>de la Recherche et de l'Innovation</a></div>
+				<div style="font-weight:normal;"><a style="color:white;" href="http://www.enseignementsup-recherche.gouv.fr/" id="sies">Sous-direction des systèmes d'information et des études statistiques - SIES </a></div>
+				<div style="color:#bbb;font-weight:normal;" id="follow-us">Suivez-nous sur</div>
+				<ul style="padding-left:0">
+					<li style="display:inline-block;padding:8px;font-size:14px;">
+						<a style="color:white" target="_blank" href="https://twitter.com/sup_recherche"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+					</li>
+					<li style="display:inline-block;padding:8px;font-size:14px;">
+						<a style="color:white" target="_blank" href="https://www.facebook.com/enseignementsup.recherche"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+					</li>
+					<li style="display:inline-block;padding:8px;font-size:14px;">
+						<a style="color:white" target="_blank" href="https://www.linkedin.com/company/ministere-de-l'enseignement-superieur-et-de-la-recherche-france/"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+</body>
+
+
+<script>
+$(document).ready(function(){
+	var lang = getUrlVars()['lang']
+	if (lang === undefined) {
+		lang='FR'
+	}
+	if (lang !== 'FR' && lang !== 'EN') {
+		lang = 'FR'
+	}
+	update_lang(lang)
+});
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+function update_lang(new_lang){
+	lang = new_lang;
+	update_page(lang);
+
+	document.title = translation['page-title'][lang];
+  	$('[data-toggle="tooltip"]').tooltip()
+
+	$('.lang-button').css('font-weight', 'normal');
+	if (new_lang === 'FR') {
+		$('#lang-select-fr').css('font-weight', '700');
+	}
+	else if (new_lang === 'EN') {
+		$('#lang-select-en').css('font-weight', '700');
+	}
+}
+
+function update_page(lang){
+	include_text('brand-title', lang)
+	include_text('title-bso', lang)
+	include_text('subtitle-bso', lang)
+	include_text('card-title', lang)
+	include_text('intro-card', lang)
+	include_text('what-is-oa', lang)
+	include_text('what-is-oa-def', lang)
+	include_text('update', lang)
+	include_text('update-def', lang)
+	include_text('links', lang)
+	include_text('links2', lang)
+	include_text('other-links', lang)
+	include_text('ouvrir-la-science', lang)
+	include_text('methodology', lang)
+	include_text('methodology2', lang)
+	include_text('methodology3', lang)
+	include_text('open-data', lang)
+	include_text('open-data2', lang)
+	include_text('open-data3', lang)
+	include_text('open-source', lang)
+	include_text('open-source2', lang)
+	include_text('mesri', lang)
+	include_text('follow-us', lang)
+	include_text('scanr', lang)
+	include_text('open-data-platform', lang)
+
+	include_text('faq', lang)
+	include_text('faq-etapes', lang)
+	include_text('faq-etapes-ans', lang)
+	include_text('faq-diffosm', lang)
+	include_text('faq-diffosm-ans', lang)
+	include_text('faq-perimetre', lang)
+	include_text('faq-perimetre-ans', lang)
+	include_text('faq-typeacces', lang)
+	include_text('faq-typeacces-ans', lang)
+	include_text('faq-update', lang)
+	include_text('faq-update-ans', lang)
+	include_text('faq-beyondoa', lang)
+	include_text('faq-beyondoa-ans', lang)
+	
+	include_graph('container_sunburst', 'graph_sunburst', 'embed_sunburst', 'open_access_sunburst.html', 'Proportion de la production scientifique française en accès ouvert ', lang);
+	refresh_data_sunburst(lang);
+
+	include_graph('container_year', 'graph_year', 'embed_year', 'open_access_year.html', 'Evolution de la proportion de la production scientifique française en accès ouvert par année', lang);
+	refresh_data_year(lang);
+
+	include_graph('container_field', 'graph_field', 'embed_field', 'open_access_field.html', 'Proportion de la production scientifique française en accès ouvert par champ disciplinaire ', lang);
+	refresh_data_field(lang);
+
+	include_graph('container_publisher', 'graph_publisher', 'embed_publisher', 'open_access_publisher.html', 'Proportion de la production scientifique française en accès pour les principaux éditeurs ', lang);
+	refresh_data_publisher(lang);
+	
+	include_graph('container_genre', 'graph_genre', 'embed_genre', 'open_access_genre.html', 'Proportion de la production scientifique française en accès ouvert par type de publication ', lang);
+	refresh_data_genre(lang);
+}
+
+</script>

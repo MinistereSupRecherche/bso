@@ -1,0 +1,39 @@
+<head>
+<meta charset="utf-8"/>
+
+<script type="text/javascript" src="./js/jquery.min.js"></script> <!-- 3.1.0 -->
+<script src="./js/highcharts.js"></script>
+<script src="./js/sunburst.js"></script>
+<script src="./js/exporting.js"></script>
+<script src="./js/export-data.js"></script>
+<script src="./js/accessibility.js"></script>
+
+<script src="./js/popper.min.js"></script> <!-- for tooltip -->
+<script src="./js/bootstrap.min.js"></script> <!-- 4.0 -->
+<script src="./js/202328786e.js"></script> <!--fontawesome-->
+<script src="./js/base.js"></script>
+<script src="./js/graph.js"></script>
+
+<link rel="stylesheet" href="./css/bootstrap.min.css"> <!--4.0-->
+<link href="./css/navbar.css" rel="stylesheet">
+<link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter&display=swap">
+<link href="./css/base.css" rel="stylesheet">
+
+<title> Baromètre de la science ouverte | Ministère de l'Enseignement Supérieur, de la Recherche et de l'Innovation </title>
+
+</head>
+
+<body>
+			<div class="card" style="" id="graph_year">
+			</div> <!--end card -->
+</body>
+
+
+<script>
+$(document).ready(function(){
+	include_graph('container_year', 'graph_year', 'embed_year', 'open_access_year.html', 'Evolution de la proportion de la production scientifique française en accès ouvert par année');
+	refresh_data_oa_per_year();
+});
+</script>
