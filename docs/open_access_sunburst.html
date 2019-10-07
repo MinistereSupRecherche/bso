@@ -48,7 +48,7 @@
 </head>
 
 <body>
-			<div class="card" style="" id="graph_year">
+			<div class="card" style="" id="graph_sunburst">
 			</div> <!--end card -->
 </body>
 
@@ -63,7 +63,7 @@ $(document).ready(function(){
 		lang = 'FR'
 	}
 	//update_lang(lang)
-	include_graph('container_year', 'graph_year', 'embed_year', 'open_access_year.html', 'Evolution de la proportion de la production scientifique française en accès ouvert par année', lang);
+	include_graph('container_sunburst', 'graph_sunburst', 'embed_sunburst', 'open_access_sunburst.html', 'Proportion de la production scientifique française en accès ouvert ', lang);
 	refresh_data_year(lang);
 });
 </script>
