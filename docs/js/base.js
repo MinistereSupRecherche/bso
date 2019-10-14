@@ -552,7 +552,7 @@ function hc(container_name, years, oa_unknown, oa_publisher, oa_repository, curr
     },
     tooltip: {
         headerFormat: '<b>{point.x}</b><br/>',
-	    pointFormat: translation['open-access-rate'][lang] +" " +translation['with-host'][lang] + " {series.name}: {point.y:.2f} % ({point.y_abs} / {point.y_tot}) <br/>" + translation['open-access-rate'][lang]+" : {point.stackTotal:.2f} %"
+	    pointFormat: "• "+translation['open-access-rate'][lang] +"<br>" +translation['with-host'][lang] + " {series.name}:<br> {point.y:.2f} % ({point.y_abs} / {point.y_tot}) <br/> • " + translation['open-access-rate'][lang]+" :<br> {point.stackTotal:.2f} %"
     },
     plotOptions: {
         column: {
