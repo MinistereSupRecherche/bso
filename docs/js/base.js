@@ -18,7 +18,7 @@ var graph_field = null;
 var graph_sunburst = null;
 
 var graph_height_1 = '500 px';
-var graph_height_2 = '650 px';
+var graph_height_2 = '670 px';
 
 
 /*
@@ -222,7 +222,7 @@ function draw_graph_year(data, lang) {
     }]
 
 
-   graph_year = hc('container_year', labels, oa_unknown, oa_publisher, oa_repository, translation['title_graph_year'][lang], "column", lang, graph_height_1, annotations, caption="",margin_bottom = 120)
+   graph_year = hc('container_year', labels, oa_unknown, oa_publisher, oa_repository, translation['title_graph_year'][lang], "column", lang, graph_height_1, annotations, caption="",margin_bottom = 150)
 }
 
 
@@ -447,7 +447,7 @@ current_chart = Highcharts.chart(container_name, {
     series: [{
         type: "sunburst",
         data: data,
-        allowDrillToNode: true,
+        allowDrillToNode: false,
         cursor: 'pointer',
 	levels:[{
             level:3,
@@ -481,7 +481,7 @@ current_chart = Highcharts.chart(container_name, {
 return current_chart;
 }
 
-function hc(container_name, years, oa_unknown, oa_publisher, oa_repository, current_title, graph_type, lang, graph_height, annotations = [], caption="", margin_bottom = 80) {
+function hc(container_name, years, oa_unknown, oa_publisher, oa_repository, current_title, graph_type, lang, graph_height, annotations = [], caption="", margin_bottom = 120) {
 	var current_chart = Highcharts.chart(container_name, {
     chart: {
         type: graph_type,
