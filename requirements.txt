@@ -1,0 +1,13 @@
+Flask==1.0.2
+flask-cors==3.0.6
+Flask-Testing==0.6.2
+flask-restplus==0.12.1
+requests==2.19.1
+gunicorn==19.9.0
+eve==0.8.1
+eve-swagger==0.0.11
+python-dateutil==2.7.3
+lxml==4.2.5
+beautifulsoup4==4.6.3
+redis==3.2.0
+celery[mongodb]==4.2
