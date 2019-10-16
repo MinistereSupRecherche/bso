@@ -13,7 +13,7 @@ translation['title-bso']['EN'] = "French <strong> Open Science </strong> Monitor
 	
 translation['subtitle-bso'] = {}
 translation['subtitle-bso']['FR'] = "Mesurer l'<span class='light-blue'>évolution de l'accès ouvert aux publications en France </span> <br> à partir de données <span class='light-blue'>fiables</span>, <span class='light-blue'>ouvertes</span> et <span class='light-blue'>maîtrisées</span>"
-translation['subtitle-bso']['EN'] = "Measure the trends of <span class='light-blue'>open access to publications in France </span> <br> using <span class='light-blue'>trustoworthy</span>, <span class='light-blue'>open</span> and <span class='light-blue'>controled</span> data"
+translation['subtitle-bso']['EN'] = "Measure the trends of <span class='light-blue'>open access to publications in France </span> <br> using <span class='light-blue'>trustworthy</span>, <span class='light-blue'>open</span> and <span class='light-blue'>controlled</span> data"
 
 translation['title_graph_sunburst']={}
 translation['title_graph_sunburst']['FR'] = 'Proportion des publications 2017 en accès ouvert<br>(mesuré en 2018)'
