@@ -1,0 +1,49 @@
+version: '3.5'
+
+services:
+
+  publications:
+    build: .
+    command: python manage.py run -h 0.0.0.0 -p ${FLASK_EXPOSE_PORT}
+    # command: gunicorn --workers=3 --bind=:${FLASK_EXPOSE_PORT} app.entrypoint:app
+    ports:
+      - 5000:5000
+    volumes:
+      - .:/srv
+    env_file:
+      - .env
+    depends_on:
+      - worker
+      - mongo
+      - redis
+
+  worker:
+    build: .
+    command: celery -A app.entrypoint.celery worker --concurrency=${CELERY_WORKERS} --loglevel=${LOG_LEVEL}
+    volumes:
+      - .:/srv
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - mongo
+
+  redis:
+    image: redis:alpine
+    command: redis-server
+    volumes:
+      - 'redis:/data'
+    ports:
+      - '6379:6379'
+
+  mongo:
+    image: mongo:4.0
+    restart: always
+    volumes:
+      - ./data/db:/data/db
+    ports:
+      - '27017:27017'
+
+
+volumes:
+  redis:
