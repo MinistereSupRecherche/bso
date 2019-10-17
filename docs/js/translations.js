@@ -95,7 +95,7 @@ translation['host-archive'] = {'FR':"Archive ouverte", 'EN':"Open repository"}
 translation['host-publisher'] = {'FR':"Editeur", 'EN':"Publisher"}
 translation['host-unknown'] = {'FR':"Non connu", 'EN':"Unknown"}
 
-translation['journal-article'] = {'FR': 'articles dans une revue', 'EN': 'journal article'}
+translation['journal-article'] = {'FR': 'articles', 'EN': 'articles'}
 translation['proceedings-article'] = {'FR': 'proceedings', 'EN': 'proceedings'}
 translation['book-chapter'] = {'FR': "chapitres d'ouvrage", 'EN': 'book chapters'}
 translation['book / monograph'] = {'FR': 'ouvrages', 'EN': 'books'}
