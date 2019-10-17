@@ -359,10 +359,10 @@ $(document).ready(function(){
 	if (lang === undefined) {
 		lang='FR'
 	}
-	if (lang !== 'FR' && lang !== 'EN') {
+	if (lang.toUpperCase() !== 'FR' && lang.toUpperCase() !== 'EN') {
 		lang = 'FR'
 	}
-	update_lang(lang)
+	update_lang(lang.toUpperCase())
 });
 
 $(function () {
