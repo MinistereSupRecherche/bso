@@ -6,6 +6,7 @@ translation['page-title']['EN'] = "French Open Science Monitor | French Ministry
 
 
 translation['brand-title'] = {'FR': 'Baromètre de la Science Ouverte', 'EN': 'French Open Science Monitor'}
+translation['brand-title-logo'] = {'FR': "<img src='logo_fr.svg' style='height:70px'>", 'EN': "<img src='logo_en.svg' style='height:70px'>"}
 
 translation['title-bso'] = {}
 translation['title-bso']['FR'] = "Baromètre français de la <strong> Science Ouverte </strong>"
@@ -95,7 +96,7 @@ translation['host-archive'] = {'FR':"Archive ouverte", 'EN':"Open repository"}
 translation['host-publisher'] = {'FR':"Editeur", 'EN':"Publisher"}
 translation['host-unknown'] = {'FR':"Non connu", 'EN':"Unknown"}
 
-translation['journal-article'] = {'FR': 'articles dans une revue', 'EN': 'journal article'}
+translation['journal-article'] = {'FR': 'articles', 'EN': 'articles'}
 translation['proceedings-article'] = {'FR': 'proceedings', 'EN': 'proceedings'}
 translation['book-chapter'] = {'FR': "chapitres d'ouvrage", 'EN': 'book chapters'}
 translation['book / monograph'] = {'FR': 'ouvrages', 'EN': 'books'}

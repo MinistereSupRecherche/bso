@@ -1,6 +1,6 @@
 function include_graph(container_name, graph_name, collapse_name, page_name, text_share, lang) {
 
-var url_to_embed = "https://bso.enseignementsup-recherche.gouv.fr/" + page_name
+var url_to_embed = "https://ministeresuprecherche.github.io/bso/" + page_name
 var twitter_share = "https://twitter.com/intent/tweet?text=" + text_share 
 twitter_share += "&url=" + url_to_embed
 twitter_share += "&related=sup_recherche&hashtags=OpenAccess,ScienceOuverte,dataESR"
