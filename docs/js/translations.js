@@ -6,6 +6,7 @@ translation['page-title']['EN'] = "French Open Science Monitor | French Ministry
 
 
 translation['brand-title'] = {'FR': 'Baromètre de la Science Ouverte', 'EN': 'French Open Science Monitor'}
+translation['brand-title-logo'] = {'FR': "<img src='logo_fr.svg' style='height:70px'>", 'EN': "<img src='logo_en.svg' style='height:70px'>"}
 
 translation['title-bso'] = {}
 translation['title-bso']['FR'] = "Baromètre français de la <strong> Science Ouverte </strong>"
