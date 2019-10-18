@@ -1,9 +1,9 @@
 
-var url_year_oa = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=open-access-monitor-france&rows=0&facet=oa_host_type_year&apikey=8b8d1b13d9551d9d68ea99f20682806c31b2adce9a10795ca73e6980"
-var url_year_oa_field = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=open-access-monitor-france&facet=oa_host_type_year_scientific_field&apikey=8b8d1b13d9551d9d68ea99f20682806c31b2adce9a10795ca73e6980&refine.scientific_field="
-var url_oa_genre = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=open-access-monitor-france&facet=oa_host_type_genre&apikey=8b8d1b13d9551d9d68ea99f20682806c31b2adce9a10795ca73e6980&refine.year=2017"
-var url_oa_publisher = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=open-access-monitor-france&facet=oa_host_type_publisher&apikey=8b8d1b13d9551d9d68ea99f20682806c31b2adce9a10795ca73e6980&refine.publisher=Elsevier BV&refine.publisher=Springer Nature&refine.publisher=Wiley-Blackwell&refine.publisher=OpenEdition&refine.publisher=Springer International Publishing&refine.publisher=Informa UK Limited&refine.publisher=CAIRN&refine.publisher=EDP Sciences&refine.publisher=American Chemical Society (ACS)&refine.publisher=IOP Publishing&refine.publisher=IEEE&disjunctive.publisher=true&refine.year=2017"
-var url_oa_field = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=open-access-monitor-france&facet=oa_host_type_scientific_field&apikey=8b8d1b13d9551d9d68ea99f20682806c31b2adce9a10795ca73e6980&refine.year=2017"
+var url_year_oa = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=open-access-monitor-france&rows=0&facet=oa_host_type_year"
+var url_year_oa_field = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=open-access-monitor-france&facet=oa_host_type_year_scientific_field&refine.scientific_field="
+var url_oa_genre = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=open-access-monitor-france&facet=oa_host_type_genre&refine.year=2017"
+var url_oa_publisher = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=open-access-monitor-france&facet=oa_host_type_publisher&refine.publisher=Elsevier BV&refine.publisher=Springer Nature&refine.publisher=Wiley-Blackwell&refine.publisher=OpenEdition&refine.publisher=Springer International Publishing&refine.publisher=Informa UK Limited&refine.publisher=CAIRN&refine.publisher=EDP Sciences&refine.publisher=American Chemical Society (ACS)&refine.publisher=IOP Publishing&refine.publisher=IEEE&disjunctive.publisher=true&refine.year=2017"
+var url_oa_field = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=open-access-monitor-france&facet=oa_host_type_scientific_field&refine.year=2017"
 
 var color_repository = '#61cdbb';
 var color_publisher = '#f1e15b';
