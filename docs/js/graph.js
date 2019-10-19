@@ -8,9 +8,9 @@ twitter_share += "&related=sup_recherche&hashtags=OpenAccess,ScienceOuverte,data
 var facebook_share = "http://www.facebook.com/sharer.php?u=" + url_to_embed
 facebook_share += "&t=" + text_share
 
-var linkedin_share = "http://www.linkedin.com/shareArticle?mini=true&url=" + url_to_embed
+url_for_linkedin = "https://ministeresuprecherche.github.io/bso/logo_fr.png"
+var linkedin_share = "http://www.linkedin.com/shareArticle?mini=true&url=" + url_for_linkedin
 linkedin_share += "&title=" + text_share
-
 
 var html ="<div id='" + container_name + "' class='graph_card'></div>"
 html += "<div class='collapse' id='" + collapse_name +"'>"
