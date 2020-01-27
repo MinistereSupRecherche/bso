@@ -82,7 +82,8 @@ translation['ouvrir-la-science'] = {'FR':"Ouvrir la science", 'EN':"Ouvrir la sc
 translation['follow-us'] = {'FR':"Suivez-nous", 'EN':"Follow us"}
 translation['mesri'] = {'FR':"Ministère de l'Enseignement Supérieur,<br>de la Recherche et de l'Innovation", 'EN':"French Ministry of Higher Education,<br>Reserach and Innovation"}
 translation['sies'] = {'FR':"Sous-direction des systèmes d'information et des études statistiques - SIES", 'EN':"Sous-direction des systèmes d'information et des études statistiques - SIES"}
-translation['scanr'] = {'FR':"ScanR, le moteur de la recherche et de l'innovation ", 'EN':"ScanR, the search engine of the French Research and Innovation landscape"}
+translation['scanr'] = {'FR':"scanR, le moteur de la recherche et de l'innovation ", 'EN':"scanR, the search engine of the French Research and Innovation landscape"}
+translation['scanr-header'] = {'FR':"Explorer les données dans scanR ", 'EN':"Explore the data in scanR"}
 translation['open-data-platform'] = {'FR':"Plateforme Open Data", 'EN':"Open Data Platform"}
 
 translation['des-publications'] = {'FR':"des publications", 'EN':'of the publications'}

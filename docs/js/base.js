@@ -2,9 +2,9 @@ var baseUrl = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/se
 var url_year_oa = baseUrl + "&rows=0&facet=oa_host_type_year"
 var url_year_oa_field = baseUrl + "&facet=oa_host_type_year_scientific_field&refine.scientific_field="
 var url_oa_genre = baseUrl + "&facet=oa_host_type_genre&refine.year=2018"
-var url_oa_publisher = baseUrl + "&facet=oa_host_type_publisher&refine.publisher=Elsevier BV&refine.publisher=Springer Nature&refine.publisher=Wiley-Blackwell&refine.publisher=OpenEdition&refine.publisher=Springer International Publishing&refine.publisher=Informa UK Limited&refine.publisher=CAIRN&refine.publisher=EDP Sciences&refine.publisher=American Chemical Society (ACS)&refine.publisher=IOP Publishing&refine.publisher=IEEE&disjunctive.publisher=true&refine.year=2013"
+var url_oa_publisher = baseUrl + "&facet=oa_host_type_publisher&refine.publisher=Elsevier BV&refine.publisher=Springer Nature&refine.publisher=Wiley-Blackwell&refine.publisher=OpenEdition&refine.publisher=Springer International Publishing&refine.publisher=Informa UK Limited&refine.publisher=CAIRN&refine.publisher=EDP Sciences&refine.publisher=American Chemical Society (ACS)&refine.publisher=IOP Publishing&refine.publisher=IEEE&disjunctive.publisher=true&refine.year=2018"
 //var url_oa_publisher = baseUrl + "&facet=oa_host_type_publisher&refine.publisher=CAIRN&disjunctive.publisher=true&refine.year=2018"
-var url_oa_field = baseUrl + "&facet=oa_host_type_scientific_field&refine.year=2017"
+var url_oa_field = baseUrl + "&facet=oa_host_type_scientific_field&refine.year=2018"
 
 var color_repository = '#61cdbb';
 var color_publisher = '#f1e15b';
@@ -225,19 +225,23 @@ function draw_graph_year(data, lang) {
 	 {
         labels: [{
             point: {
-                xAxis: 0,
-                yAxis: 0,
+		xAxis: 0,
+		yAxis: 0,
                 x: 5,
-                y: 50
+                y: 65
             },
+	    padding: 10,
+	    distance:1,
             text: translation['last_year_oa'][lang]
         }]
     }, {
         labelOptions: {
             shape: 'connector',
             align: 'right',
+	    verticalAlign: 'top',
             justify: false,
-            crop: true,
+            crop: false,
+	    allowOverlap: true,
             style: {
                 fontSize: '0.8em',
                 textOutline: '1px white'
@@ -525,6 +529,7 @@ return current_chart;
 }
 
 function hc(container_name, years, oa_unknown, oa_publisher, oa_publisherAndrepo, oa_repository, current_title, graph_type, lang, graph_height, annotations = [], caption="", margin_bottom = 120) {
+	console.log('tt', annotations);
 	var current_chart = Highcharts.chart(container_name, {
     chart: {
         type: graph_type,
