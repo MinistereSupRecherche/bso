@@ -17,24 +17,24 @@ translation['subtitle-bso']['FR'] = "Mesurer l'<span class='light-blue'>évoluti
 translation['subtitle-bso']['EN'] = "Measure the trends of <span class='light-blue'>open access to publications in France </span> <br> using <span class='light-blue'>trustworthy</span>, <span class='light-blue'>open</span> and <span class='light-blue'>controlled</span> data"
 
 translation['title_graph_sunburst']={}
-translation['title_graph_sunburst']['FR'] = 'Proportion des publications 2017 en accès ouvert<br>(mesuré en 2018)'
-translation['title_graph_sunburst']['EN'] = 'Share of 2017 publications that are open access<br>(measured in 2018)'
+translation['title_graph_sunburst']['FR'] = 'Proportion des publications 2018 en accès ouvert<br>(mesuré en 2019)'
+translation['title_graph_sunburst']['EN'] = 'Share of 2018 publications that are open access<br>(measured in 2019)'
 
 translation['title_graph_year']={}
-translation['title_graph_year']['FR'] = "Evolution du taux d'accès ouvert aux publications<br>(mesuré en 2018)"
-translation['title_graph_year']['EN'] = 'Open access rate evolution<br>(measured in 2018)'
+translation['title_graph_year']['FR'] = "Evolution du taux d'accès ouvert aux publications<br>(mesuré en 2019)"
+translation['title_graph_year']['EN'] = 'Open access rate evolution<br>(measured in 2019)'
 
 translation['title_graph_field']={}
-translation['title_graph_field']['FR'] = "Taux d'accès ouvert aux publications 2017 par discipline<br>(mesuré en 2018)"
-translation['title_graph_field']['EN'] = "Open access to 2017 publications per discipline<br>(measured in 2018)"
+translation['title_graph_field']['FR'] = "Taux d'accès ouvert aux publications 2018 par discipline<br>(mesuré en 2019)"
+translation['title_graph_field']['EN'] = "Open access to 2018 publications per discipline<br>(measured in 2019)"
 
 translation['title_graph_publisher']={}
-translation['title_graph_publisher']['FR'] = "Taux d'accès ouvert aux publications 2017 par éditeur / préfixe DOI<br>(mesuré en 2018)"
-translation['title_graph_publisher']['EN'] = 'Open access to 2017 publications per publisher / DOI prefix<br>(measured in 2018)'
+translation['title_graph_publisher']['FR'] = "Taux d'accès ouvert aux publications 2018 par éditeur / préfixe DOI<br>(mesuré en 2019)"
+translation['title_graph_publisher']['EN'] = 'Open access to 2018 publications per publisher / DOI prefix<br>(measured in 2019)'
 
 translation['title_graph_genre']={}
-translation['title_graph_genre']['FR'] = "Répartition des publications 2017 par genre et type d'accès<br>(mesuré en 2018)"
-translation['title_graph_genre']['EN'] = 'Distribution of the 2017 publications by genre and access type<br>(measured in 2018)'
+translation['title_graph_genre']['FR'] = "Répartition des publications 2018 par genre et type d'accès<br>(mesuré en 2019)"
+translation['title_graph_genre']['EN'] = 'Distribution of the 2018 publications by genre and access type<br>(measured in 2019)'
 
 translation['subtitle_graph']={}
 translation['subtitle_graph']['FR'] =  "estimé à partir des publications détectées avec une affiliation française <br/> Source : Unpaywall, traitements MESRI"
@@ -74,7 +74,7 @@ translation['what-is-oa'] = {'FR':"Qu'est-ce que le taux d'accès ouvert ?", 'EN
 translation['what-is-oa-def'] = {'FR':"Les publications en accès ouvert désignent les publications de recherche mises à disposition librement sur l'internet public. Le taux d'accès ouvert représente le ratio du nombre de publications en accès ouvert rapporté au nombre total de publications sur le même périmètre (par exemple par année, discipline ou éditeur). Deux types d'accès ouvert sont distingués, en fonction du type d'hébergement, chez l'éditeur ou sur archive ouverte. Le taux d'accès ouvert est estimé grâce à une méthodologie indépendante et reposant uniquement sur des ressources ouvertes ou disponibles publiquement. <a target='_blank' href='https://unpaywall.org'>Unpaywall</a> en constitue la source principale. Seules les publications avec DOI sont prises en compte pour le moment. <br>La méthodologie est détaillée dans <a target='_blank' href='https://hal.archives-ouvertes.fr/hal-02141819v1'>cet article</a>, une foire aux questions est disponible ci-dessous et les données résultantes sont disponibles sur <a target='_blank' href='https://data.enseignementsup-recherche.gouv.fr/explore/dataset/open-access-monitor-france/'>la plateforme Open Data du MESRI</a>."}
 translation['what-is-oa-def']['EN']="Open access publications refer to research publications made freely accessible on the public internet. The open access rate represents the ratio linking the number of open access publications to the total number of publications on the same perimeter (eg. for a given year, discipline or publisher). Two types of open access are identified, depending on the the host type, that could be on the publisher's website or on an open repository. The open access rate is estimated with an independent methodology, using only open or publicly available data. <a target='_blank' href='https://unpaywall.org'>Unpaywall</a> is the main source used. Only the publications with a DOI are taken into account for the moment. <br>The methodology is detailed in <a target='_blank' href='https://hal.archives-ouvertes.fr/hal-02141819v1' >this article</a>, a FAQ is available below and the resulting data is available on <a target='_blank' href='https://data.enseignementsup-recherche.gouv.fr/explore/dataset/open-access-monitor-france/' >the MESRI Open Data platform</a>." 
 translation['update'] = {'FR':"Date de mise à jour", 'EN':"Update"}
-translation['update-def'] = {'FR':"Ces résultats ont été mis à jour en Avril 2019 en utilisant le snapshot Unpaywall de Septembre 2018. Les résultats présentés seront mis à jour régulièrement. ", 'EN':"These results have been updated in April 2019, using the September 2018 Unpaywall snapshot. The results will be updated on a regular basis."}
+translation['update-def'] = {'FR':"Ces résultats ont été mis à jour en Décembre 2019 en utilisant les feed hebdomadaires Unpaywall. Les résultats présentés seront mis à jour régulièrement. ", 'EN':"These results have been updated in December 2019, using the weekly Unpaywall feed. The results will be updated on a regular basis."}
 translation['links'] = {'FR':"Liens", 'EN':"Links"}
 translation['links2'] = {'FR':"Liens", 'EN':"Links"}
 translation['other-links'] = {'FR':"Voir aussi", 'EN':"See also"}
@@ -94,6 +94,7 @@ translation['closed-access'] = {'FR':"Accès fermé", 'EN': "Closed access"}
 translation['hosting'] = {'FR':"Type d'hébergement", 'EN': "Host type"}
 translation['host-archive'] = {'FR':"Archive ouverte", 'EN':"Open repository"}
 translation['host-publisher'] = {'FR':"Editeur", 'EN':"Publisher"}
+translation['host-publisherAndrepo'] = {'FR':"Editeur et archive", 'EN':"Publisher and repository"}
 translation['host-unknown'] = {'FR':"Non connu", 'EN':"Unknown"}
 
 translation['journal-article'] = {'FR': 'articles', 'EN': 'articles'}
