@@ -529,7 +529,6 @@ return current_chart;
 }
 
 function hc(container_name, years, oa_unknown, oa_publisher, oa_publisherAndrepo, oa_repository, current_title, graph_type, lang, graph_height, annotations = [], caption="", margin_bottom = 120) {
-	console.log('tt', annotations);
 	var current_chart = Highcharts.chart(container_name, {
     chart: {
         type: graph_type,
