@@ -1,12 +1,14 @@
-
-var url_year_oa = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=open-access-monitor-france&rows=0&facet=oa_host_type_year"
-var url_year_oa_field = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=open-access-monitor-france&facet=oa_host_type_year_scientific_field&refine.scientific_field="
-var url_oa_genre = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=open-access-monitor-france&facet=oa_host_type_genre&refine.year=2017"
-var url_oa_publisher = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=open-access-monitor-france&facet=oa_host_type_publisher&refine.publisher=Elsevier BV&refine.publisher=Springer Nature&refine.publisher=Wiley-Blackwell&refine.publisher=OpenEdition&refine.publisher=Springer International Publishing&refine.publisher=Informa UK Limited&refine.publisher=CAIRN&refine.publisher=EDP Sciences&refine.publisher=American Chemical Society (ACS)&refine.publisher=IOP Publishing&refine.publisher=IEEE&disjunctive.publisher=true&refine.year=2017"
-var url_oa_field = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=open-access-monitor-france&facet=oa_host_type_scientific_field&refine.year=2017"
+var baseUrl = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=open-access-monitor-france"
+var url_year_oa = baseUrl + "&rows=0&facet=oa_host_type_year"
+var url_year_oa_field = baseUrl + "&facet=oa_host_type_year_scientific_field&refine.scientific_field="
+var url_oa_genre = baseUrl + "&facet=oa_host_type_genre&refine.year=2018"
+var url_oa_publisher = baseUrl + "&facet=oa_host_type_publisher&refine.publisher=Elsevier BV&refine.publisher=Springer Nature&refine.publisher=Wiley-Blackwell&refine.publisher=OpenEdition&refine.publisher=Springer International Publishing&refine.publisher=Informa UK Limited&refine.publisher=CAIRN&refine.publisher=EDP Sciences&refine.publisher=American Chemical Society (ACS)&refine.publisher=IOP Publishing&refine.publisher=IEEE&disjunctive.publisher=true&refine.year=2018"
+//var url_oa_publisher = baseUrl + "&facet=oa_host_type_publisher&refine.publisher=CAIRN&disjunctive.publisher=true&refine.year=2018"
+var url_oa_field = baseUrl + "&facet=oa_host_type_scientific_field&refine.year=2018"
 
 var color_repository = '#61cdbb';
 var color_publisher = '#f1e15b';
+var color_publisherAndrepo = '#D3FFB4';
 var color_unknown = '#205A7D';
 var color_closed = 'grey';
 var color_oa = '#3288BD';
@@ -115,14 +117,17 @@ function format_data(data, facet_name, add_count = true){
   var labels_with_count = []
   var oa_repository = []
   var oa_publisher = []
+  var oa_publisherAndrepo = []
   var oa_unknown = []
   var closed = []
   var oa_all = []
+  if (facet_name === "oa_host_type_publisher") {
+  }
   for (i = 0; i < response.length; i++) {
     label_split = response[i]["name"].split("|")
     oa_type = label_split[0]
     label = label_split[1]
-    if (label === "unknown") {
+    if (label === "unknown" || label === "undefined") {
 	    continue
     }
     oa_type_count = response[i]["count"]
@@ -134,15 +139,30 @@ function format_data(data, facet_name, add_count = true){
   }
   labels = labels.sort()
   nb_total_label = {}
-  
   for (i in labels){
     label = labels[i]
-    nb_repository = count_oa_label_host[label]['repository']
-    nb_publisher = count_oa_label_host[label]['publisher']
-    nb_unknown = count_oa_label_host[label]['unknown']
-    nb_closed = count_oa_label_host[label]['closed access']
-    nb_oa = nb_repository + nb_publisher + nb_unknown
-    nb_total = nb_repository + nb_publisher + nb_unknown + nb_closed
+    nb_repository = 0;
+    nb_publisher = 0;
+    nb_publisherAndrepo = 0;
+    nb_unknown = 0;
+    nb_closed = 0;
+    if ('repository' in count_oa_label_host[label]) {
+      nb_repository = count_oa_label_host[label]['repository'];
+    }
+    if ('publisher' in count_oa_label_host[label]) {
+      nb_publisher = count_oa_label_host[label]['publisher']
+    }
+    if ('publisher;repository' in count_oa_label_host[label]) {
+      nb_publisherAndrepo = count_oa_label_host[label]['publisher;repository']
+    }
+    if ('unknown' in count_oa_label_host[label]) {
+      nb_unknown = count_oa_label_host[label]['unknown'];
+    }
+    if ('closed access' in count_oa_label_host[label]) {
+      nb_closed = count_oa_label_host[label]['closed access']
+    }
+    nb_oa = nb_repository + nb_publisher + nb_publisherAndrepo + nb_unknown
+    nb_total = nb_repository + nb_publisher + nb_publisherAndrepo + nb_unknown + nb_closed
     count_oa_label_host[label]['total'] = nb_total
     nb_total_label[label] = nb_total
     if (add_count) {
@@ -151,39 +171,42 @@ function format_data(data, facet_name, add_count = true){
 	    labels_with_count.push(label)
     }
     oa_repository.push({'y': nb_repository/nb_total * 100, 'y_abs':nb_repository, 'y_tot':nb_total})
+    oa_publisherAndrepo.push({'y': nb_publisherAndrepo/nb_total * 100, 'y_abs':nb_publisherAndrepo, 'y_tot':nb_total})
     oa_publisher.push({'y': nb_publisher/nb_total * 100, 'y_abs':nb_publisher, 'y_tot':nb_total})
     oa_unknown.push({'y': nb_unknown/nb_total * 100, 'y_abs':nb_unknown, 'y_tot':nb_total})
     closed.push({'y': nb_closed/nb_total * 100, 'y_abs':nb_closed, 'y_tot':nb_total})
     oa_all.push({'y': nb_oa/nb_total * 100, 'y_abs':nb_oa, 'y_tot':nb_total})
   }
-  return {'labels': labels_with_count, 'oa_repository':oa_repository, 'oa_publisher':oa_publisher, 'oa_unknown': oa_unknown, 'oa': oa_all, 'closed': closed}
+  return {'labels': labels_with_count, 'oa_repository':oa_repository, 'oa_publisher':oa_publisher, 'oa_publisherAndrepo':oa_publisherAndrepo, 'oa_unknown': oa_unknown, 'oa': oa_all, 'closed': closed}
   }
 
 function draw_graph_genre(data, lang) {
     data_formatted = format_data(data, "oa_host_type_genre", add_count = false)
-    console.log(data_formatted)
     labels = data_formatted['labels']
     oa_repository = data_formatted['oa_repository']
     oa_publisher = data_formatted['oa_publisher']
+    oa_publisherAndrepo = data_formatted['oa_publisherAndrepo']
     oa_unknown = data_formatted['oa_unknown']
     closed_access = data_formatted['closed']
-   graph_genre = hc_treemap('container_genre', labels, oa_repository, oa_publisher, oa_unknown, closed_access, translation['title_graph_genre'][lang], lang, graph_height_1)
+   graph_genre = hc_treemap('container_genre', labels, oa_repository, oa_publisher, oa_publisherAndrepo, oa_unknown, closed_access, translation['title_graph_genre'][lang], lang, graph_height_1)
 }
 function draw_graph_field(data, lang) {
     data_formatted = format_data(data, "oa_host_type_year_scientific_field")
     labels = data_formatted['labels']
     oa_repository = data_formatted['oa_repository']
     oa_publisher = data_formatted['oa_publisher']
+    oa_publisherAndrepo = data_formatted['oa_publisherAndrepo']
     oa_unknown = data_formatted['oa_unknown']
-   graph_field = hc('container_field', labels, oa_unknown, oa_publisher, oa_repository, translation['title_graph_field'][lang], "bar", lang, graph_height_2)
+   graph_field = hc('container_field', labels, oa_unknown, oa_publisher, oa_publisherAndrepo, oa_repository, translation['title_graph_field'][lang], "bar", lang, graph_height_2)
 }
 function draw_graph_publisher(data, lang) {
     data_formatted = format_data(data, "oa_host_type_publisher")
     labels = data_formatted['labels']
     oa_repository = data_formatted['oa_repository']
     oa_publisher = data_formatted['oa_publisher']
+    oa_publisherAndrepo = data_formatted['oa_publisherAndrepo']
     oa_unknown = data_formatted['oa_unknown']
-   graph_publisher = hc('container_publisher', labels, oa_unknown, oa_publisher, oa_repository,  translation['title_graph_publisher'][lang], "bar", lang, graph_height_2, annotations=[], caption = translation['publisher-caption'][lang], margin_bottom = 120)
+   graph_publisher = hc('container_publisher', labels, oa_unknown, oa_publisher, oa_publisherAndrepo, oa_repository,  translation['title_graph_publisher'][lang], "bar", lang, graph_height_2, annotations=[], caption = translation['publisher-caption'][lang], margin_bottom = 120)
 }
 
 function draw_graph_year(data, lang) {
@@ -195,25 +218,30 @@ function draw_graph_year(data, lang) {
     labels = data_formatted['labels']
     oa_repository = data_formatted['oa_repository']
     oa_publisher = data_formatted['oa_publisher']
+    oa_publisherAndrepo = data_formatted['oa_publisherAndrepo']
     oa_unknown = data_formatted['oa_unknown']
 
  annotations = [
 	 {
         labels: [{
             point: {
-                xAxis: 0,
-                yAxis: 0,
-                x: 4,
-                y: 45
+		xAxis: 0,
+		yAxis: 0,
+                x: 5,
+                y: 65
             },
+	    padding: 10,
+	    distance:1,
             text: translation['last_year_oa'][lang]
         }]
     }, {
         labelOptions: {
             shape: 'connector',
             align: 'right',
+	    verticalAlign: 'top',
             justify: false,
-            crop: true,
+            crop: false,
+	    allowOverlap: true,
             style: {
                 fontSize: '0.8em',
                 textOutline: '1px white'
@@ -222,25 +250,26 @@ function draw_graph_year(data, lang) {
     }]
 
 
-   graph_year = hc('container_year', labels, oa_unknown, oa_publisher, oa_repository, translation['title_graph_year'][lang], "column", lang, graph_height_1, annotations, caption="",margin_bottom = 150)
+   graph_year = hc('container_year', labels, oa_unknown, oa_publisher, oa_publisherAndrepo, oa_repository, translation['title_graph_year'][lang], "column", lang, graph_height_1, annotations, caption="",margin_bottom = 150)
 }
 
 
 function draw_sunburst_year(data, lang){
 
     data_formatted = format_data(data)
-    year_index = 4
+    year_index = 5 // here to change year displayed !
     year = data_formatted['labels'][year_index]
     oa_repository = data_formatted['oa_repository'][year_index]
     oa_publisher = data_formatted['oa_publisher'][year_index]
+    oa_publisherAndrepo = data_formatted['oa_publisherAndrepo'][year_index]
     oa_unknown = data_formatted['oa_unknown'][year_index]
     closed_access = data_formatted['closed'][year_index]
     oa_all = data_formatted['oa'][year_index]
-    graph_sunburst = hc_sunburst('container_sunburst', year, oa_repository, oa_publisher, oa_unknown, oa_all, closed_access, translation['title_graph_sunburst'][lang], lang)
+    graph_sunburst = hc_sunburst('container_sunburst', year, oa_repository, oa_publisher, oa_publisherAndrepo, oa_unknown, oa_all, closed_access, translation['title_graph_sunburst'][lang], lang)
 }
 
 
-function hc_treemap(container_name, labels, oa_repository, oa_publisher, oa_unknown, closed_access, current_title, lang, graph_height){
+function hc_treemap(container_name, labels, oa_repository, oa_publisher, oa_publisherAndrepo, oa_unknown, closed_access, current_title, lang, graph_height){
 var data = [
 {
     id: 'closed',
@@ -254,6 +283,11 @@ var data = [
     id: 'publisher',
     name: translation['host-publisher'][lang],
     color: color_publisher,
+//    parent: 'oa'
+}, {
+    id: 'publisherAndrepo',
+    name: translation['host-publisherAndrepo'][lang],
+    color: color_publisherAndrepo,
 //    parent: 'oa'
 }, {
     id: 'repository',
@@ -284,6 +318,11 @@ var data = [
 		  parent: 'publisher',
 		  access_type: translation['open-access'][lang] + ' ( ' + translation['host-publisher'][lang] + ' )',
 		  value: oa_publisher[i]['y_abs']});
+	  data.push({
+		  name: translation[labels[i]][lang],
+		  parent: 'publisherAndrepo',
+		  access_type: translation['open-access'][lang] + ' ( ' + translation['host-publisherAndrepo'][lang] + ' )',
+		  value: oa_publisherAndrepo[i]['y_abs']});
 	  data.push({
 		  name: translation[labels[i]][lang],
 		  parent: 'unknown',
@@ -342,7 +381,7 @@ return current_chart;
 }
 
 
-function hc_sunburst(container_name, year, oa_repository, oa_publisher, oa_unknown, oa_all, closed_access, current_title, lang){
+function hc_sunburst(container_name, year, oa_repository, oa_publisher, oa_publisherAndrepo, oa_unknown, oa_all, closed_access, current_title, lang){
 var data = [
 {
     id: '0.0',
@@ -364,13 +403,21 @@ var data = [
 }, {
     id: '1.2',
     parent: '0.0',
+    name: translation['host-publisherAndrepo'][lang],
+    color: color_publisherAndrepo,
+    value: oa_publisherAndrepo['y'],
+    abs_value: oa_publisherAndrepo['y_abs'],
+    total: oa_publisherAndrepo['y_tot']
+}, {
+    id: '1.3',
+    parent: '0.0',
     name: translation['host-archive'][lang],
     color: color_repository,
     value: oa_repository['y'],
     abs_value: oa_repository['y_abs'],
     total: oa_repository['y_tot']
 }, {
-    id: '1.3',
+    id: '1.4',
     parent: '0.0',
     name: translation['host-unknown'][lang],
     color: color_unknown,
@@ -481,7 +528,7 @@ current_chart = Highcharts.chart(container_name, {
 return current_chart;
 }
 
-function hc(container_name, years, oa_unknown, oa_publisher, oa_repository, current_title, graph_type, lang, graph_height, annotations = [], caption="", margin_bottom = 120) {
+function hc(container_name, years, oa_unknown, oa_publisher, oa_publisherAndrepo, oa_repository, current_title, graph_type, lang, graph_height, annotations = [], caption="", margin_bottom = 120) {
 	var current_chart = Highcharts.chart(container_name, {
     chart: {
         type: graph_type,
@@ -580,17 +627,22 @@ function hc(container_name, years, oa_unknown, oa_publisher, oa_repository, curr
         name: translation['host-unknown'][lang],
         data: oa_unknown,
 	color: color_unknown,
-	legendIndex: 2
+	legendIndex: 3
     }, {
         name: translation['host-publisher'][lang],
         data: oa_publisher,
 	color: color_publisher,
+	legendIndex: 0
+    }, {
+        name: translation['host-publisherAndrepo'][lang],
+        data: oa_publisherAndrepo,
+	color: color_publisherAndrepo,
 	legendIndex: 1
     }, {
         name: translation['host-archive'][lang],
         data: oa_repository,
 	color: color_repository,
-	legendIndex: 0
+	legendIndex: 2
     }]
 });
 return current_chart;
