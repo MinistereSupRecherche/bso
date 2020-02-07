@@ -32,14 +32,15 @@ def get_supervised(structure_id):
     res = r.json()['results']
     return [i['value']['id'] for i in res]
 
-def get_all_structures(structure_id):
+def get_all_structures(structure_id, verbose = False):
     all_structures = [structure_id] + get_parents(structure_id) + get_supervised(structure_id)
     all_structures_dedup = list(set(all_structures))
-    #print("Structures identifiées dans le périmètre : \n {}".format(", ".join(all_structures_dedup)))
+    if verbose:
+        print("Structures identifiées dans le périmètre : \n {}".format(", ".join(all_structures_dedup)))
     return all_structures_dedup
 
-def get_publications_one_year(structure, year_start):
-    structures = get_all_structures(structure)
+def get_publications_one_year(structure, year_start, verbose = False):
+    structures = get_all_structures(structure, verbose)
     url = SCANR_API_BASE+"publications/search"
     params = {"pageSize":10000,
               "query":"","sort":{"year":"DESC"},"sourceFields":["id","title","year"],"filters":{"year":{"type":"LongRangeFilter","max":year_start + 1,"min":year_start,"missing":False},"productionType":{"type":"MultiValueSearchFilter","op":"all","values":["publication"]},"affiliations.id":{"type":"MultiValueSearchFilter","op":"any","values":
@@ -48,6 +49,8 @@ def get_publications_one_year(structure, year_start):
     r = requests.post(url, json=params)
     if r.json()['total'] > 10000:
         print("Attention, plus de 10 000 publications. Seules 10 000 sont renvoyées par l'API.")
+    if verbose:
+        print("{} publications pour l'année {}".format(r.json()['total'], year_start), end=' ')
     res = r.json()['results']
     publi_with_doi = []
     for p in res:
@@ -58,12 +61,14 @@ def get_publications_one_year(structure, year_start):
             if 'isOa' in p['value']:
                 del p['value']['isOa']
             publi_with_doi.append(p['value'])       
+    if verbose:
+        print("dont {} avec un DOI".format(len(publi_with_doi)))
     return pd.DataFrame(publi_with_doi)
 
-def get_publications_with_doi(structure):
+def get_publications_with_doi(structure, verbose = False):
     dfs = []
     for year in range(2013,2021):
-        dfs.append(get_publications_one_year(structure, year))
+        dfs.append(get_publications_one_year(structure, year, verbose))
     df = pd.concat(dfs)
     df = df.sort_values(by='year').reset_index()
     del df['index']
