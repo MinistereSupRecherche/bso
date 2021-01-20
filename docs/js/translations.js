@@ -126,8 +126,8 @@ translation['nf-bso-2019']['FR'] =  "<a target='_blank' href='https://www.enseig
 translation['nf-bso-2019']['EN'] =  "<a target='_blank' href='https://www.enseignementsup-recherche.gouv.fr/cid148931/barometre-francais-de-la-science-ouverte.html'> BSO 2019</a>"
 
 translation['nf-bso-2020']={}
-translation['nf-bso-2020']['FR'] =  "Edition 2020 du BSO (lien à venir)"
-translation['nf-bso-2020']['EN'] =  "BSO 2020"
+translation['nf-bso-2020']['FR'] =  "<a target='_blank' href='https://www.enseignementsup-recherche.gouv.fr/cid156502/barometre-francais-de-la-science-ouverte-2020.html'> Edition 2020 du BSO</a>"
+translation['nf-bso-2020']['EN'] =  "<a target='_blank' href='https://www.enseignementsup-recherche.gouv.fr/cid156502/barometre-francais-de-la-science-ouverte-2020.html'> BSO 2020</a>"
 
 translation['bso-flyer']={}
 translation['bso-flyer']['FR'] =  "<a target='_blank' href='./Flyer_BSO.pdf'> Présentation synthétique du BSO (flyer) </a>"
