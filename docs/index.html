@@ -179,13 +179,32 @@
 			</div> <!--end card -->
 		</div> <!-- end col-md-6-->
 	</div> <!-- end row-->
-
+	
 	<div class="row">
 		<div class="col-md-6" style="margin-top:20px;padding-right:5px;">
 			<div class="card" id="graph_genre">
 			</div> <!--end card -->
 		</div> <!-- end col-md-6-->
-		
+
+		<div class="col-md-6" style="margin-top:20px;padding-left:5px;">
+			<div class="card" id="graph_repo">
+			</div> <!--end card -->
+		</div> <!-- end col-md-6-->
+	</div> <!-- end row-->
+
+	<div class="row">
+		<div class="col-md-6" style="margin-top:20px;padding-right:5px;">
+			<div class="card">
+				<div class="card-header"> <h2> <div id='notes-flash'> Notes Flash</div>  </h2> </div>
+				<div id="notes-flash-intro" style="margin: 15px"></div>
+				<ul>
+					<li><div id='nf-bso-2020' style="margin: 10px"></div></li>
+					<li><div id='nf-bso-2019' style="margin: 10px"></div></li>
+					<li><div id='nf-bso-2018' style="margin: 10px"></div></li>
+					<li><div id='bso-flyer' style="margin: 10px"></div></li>
+				</ul>
+			</div> <!--end card -->
+		</div> <!-- end col-md-6-->
 		<div class="col-md-6" style="margin-top:20px;padding-left:5px;">
 			<div class="card">
 				<div class="card-header"> <h2> <div id='faq'> Foire Aux Questions</div>  </h2> </div>
@@ -422,6 +441,13 @@ function update_page(lang){
 	include_text('scanr-header', lang)
 	include_text('open-data-platform', lang)
 
+	include_text('notes-flash', lang)
+	include_text('notes-flash-intro', lang)
+	include_text('nf-bso-2018', lang) 
+	include_text('nf-bso-2019', lang) 
+	include_text('nf-bso-2020', lang) 
+	include_text('bso-flyer', lang) 
+
 	include_text('faq', lang)
 	include_text('faq-etapes', lang)
 	include_text('faq-etapes-ans', lang)
@@ -450,6 +476,9 @@ function update_page(lang){
 	
 	include_graph('container_genre', 'graph_genre', 'embed_genre', 'open_access_genre.html', 'Proportion de la production scientifique française en accès ouvert par type de publication ', lang);
 	refresh_data_genre(lang);
+	
+	include_graph('container_repo', 'graph_repo', 'embed_repo', 'open_access_repo.html', 'Part des archives ouvertes ', lang);
+	refresh_data_repo(lang);
 }
 
 </script>

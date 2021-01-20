@@ -17,24 +17,28 @@ translation['subtitle-bso']['FR'] = "Mesurer l'<span class='light-blue'>évoluti
 translation['subtitle-bso']['EN'] = "Measure the trends of <span class='light-blue'>open access to publications in France </span> <br> using <span class='light-blue'>trustworthy</span>, <span class='light-blue'>open</span> and <span class='light-blue'>controlled</span> data"
 
 translation['title_graph_sunburst']={}
-translation['title_graph_sunburst']['FR'] = 'Proportion des publications 2018 en accès ouvert<br>(mesuré en 2019)'
-translation['title_graph_sunburst']['EN'] = 'Share of 2018 publications that are open access<br>(measured in 2019)'
+translation['title_graph_sunburst']['FR'] = 'Proportion des publications 2019 en accès ouvert<br>(mesuré en 2020)'
+translation['title_graph_sunburst']['EN'] = 'Share of 2019 publications that are open access<br>(measured in 2020)'
 
 translation['title_graph_year']={}
-translation['title_graph_year']['FR'] = "Evolution du taux d'accès ouvert aux publications<br>(mesuré en 2019)"
-translation['title_graph_year']['EN'] = 'Open access rate evolution<br>(measured in 2019)'
+translation['title_graph_year']['FR'] = "Evolution du taux d'accès ouvert aux publications<br>(mesuré en 2020)"
+translation['title_graph_year']['EN'] = 'Open access rate evolution<br>(measured in 2020)'
 
 translation['title_graph_field']={}
-translation['title_graph_field']['FR'] = "Taux d'accès ouvert aux publications 2018 par discipline<br>(mesuré en 2019)"
-translation['title_graph_field']['EN'] = "Open access to 2018 publications per discipline<br>(measured in 2019)"
+translation['title_graph_field']['FR'] = "Taux d'accès ouvert aux publications 2019 par discipline<br>(mesuré en 2020)"
+translation['title_graph_field']['EN'] = "Open access to 2019 publications per discipline<br>(measured in 2020)"
 
 translation['title_graph_publisher']={}
-translation['title_graph_publisher']['FR'] = "Taux d'accès ouvert aux publications 2018 par éditeur / préfixe DOI<br>(mesuré en 2019)"
-translation['title_graph_publisher']['EN'] = 'Open access to 2018 publications per publisher / DOI prefix<br>(measured in 2019)'
+translation['title_graph_publisher']['FR'] = "Taux d'accès ouvert aux publications 2019 par éditeur / préfixe DOI<br>(mesuré en 2020)"
+translation['title_graph_publisher']['EN'] = 'Open access to 2019 publications per publisher / DOI prefix<br>(measured in 2020)'
 
 translation['title_graph_genre']={}
-translation['title_graph_genre']['FR'] = "Répartition des publications 2018 par genre et type d'accès<br>(mesuré en 2019)"
-translation['title_graph_genre']['EN'] = 'Distribution of the 2018 publications by genre and access type<br>(measured in 2019)'
+translation['title_graph_genre']['FR'] = "Répartition des publications 2019 par genre et type d'accès<br>(mesuré en 2020)"
+translation['title_graph_genre']['EN'] = 'Distribution of the 2019 publications by genre and access type<br>(measured in 2020)'
+
+translation['title_graph_repo']={}
+translation['title_graph_repo']['FR'] = "Nombre de publications 2019 hébergées par archives ouvertes<br>(mesuré en 2020)"
+translation['title_graph_repo']['EN'] = 'Number of publications 2019 hosted for each open archive<br>(measured in 2020)'
 
 translation['subtitle_graph']={}
 translation['subtitle_graph']['FR'] =  "estimé à partir des publications détectées avec une affiliation française <br/> Source : Unpaywall, traitements MESRI"
@@ -74,7 +78,7 @@ translation['what-is-oa'] = {'FR':"Qu'est-ce que le taux d'accès ouvert ?", 'EN
 translation['what-is-oa-def'] = {'FR':"Les publications en accès ouvert désignent les publications de recherche mises à disposition librement sur l'internet public. Le taux d'accès ouvert représente le ratio du nombre de publications en accès ouvert rapporté au nombre total de publications sur le même périmètre (par exemple par année, discipline ou éditeur). Deux types d'accès ouvert sont distingués, en fonction du type d'hébergement, chez l'éditeur ou sur archive ouverte. Le taux d'accès ouvert est estimé grâce à une méthodologie indépendante et reposant uniquement sur des ressources ouvertes ou disponibles publiquement. <a target='_blank' href='https://unpaywall.org'>Unpaywall</a> en constitue la source principale. Seules les publications avec DOI sont prises en compte pour le moment. <br>La méthodologie est détaillée dans <a target='_blank' href='https://hal.archives-ouvertes.fr/hal-02141819v1'>cet article</a>, une foire aux questions est disponible ci-dessous et les données résultantes sont disponibles sur <a target='_blank' href='https://data.enseignementsup-recherche.gouv.fr/explore/dataset/open-access-monitor-france/'>la plateforme Open Data du MESRI</a>."}
 translation['what-is-oa-def']['EN']="Open access publications refer to research publications made freely accessible on the public internet. The open access rate represents the ratio linking the number of open access publications to the total number of publications on the same perimeter (eg. for a given year, discipline or publisher). Two types of open access are identified, depending on the the host type, that could be on the publisher's website or on an open repository. The open access rate is estimated with an independent methodology, using only open or publicly available data. <a target='_blank' href='https://unpaywall.org'>Unpaywall</a> is the main source used. Only the publications with a DOI are taken into account for the moment. <br>The methodology is detailed in <a target='_blank' href='https://hal.archives-ouvertes.fr/hal-02141819v1' >this article</a>, a FAQ is available below and the resulting data is available on <a target='_blank' href='https://data.enseignementsup-recherche.gouv.fr/explore/dataset/open-access-monitor-france/' >the MESRI Open Data platform</a>." 
 translation['update'] = {'FR':"Date de mise à jour", 'EN':"Update"}
-translation['update-def'] = {'FR':"Ces résultats ont été mis à jour en Décembre 2019 en utilisant les feed hebdomadaires Unpaywall. Les résultats présentés seront mis à jour régulièrement. ", 'EN':"These results have been updated in December 2019, using the weekly Unpaywall feed. The results will be updated on a regular basis."}
+translation['update-def'] = {'FR':"Ces résultats ont été mis à jour en Décembre 2020 en utilisant les feed hebdomadaires Unpaywall. Les résultats présentés seront mis à jour régulièrement. ", 'EN':"These results have been updated in December 2020, using the weekly Unpaywall feed. The results will be updated on a regular basis."}
 translation['links'] = {'FR':"Liens", 'EN':"Links"}
 translation['links2'] = {'FR':"Liens", 'EN':"Links"}
 translation['other-links'] = {'FR':"Voir aussi", 'EN':"See also"}
@@ -109,6 +113,25 @@ translation['last_year_oa'] = {'FR': "La dernière observation est plus faible<b
 translation['publisher-caption'] = {'FR': "<i class='fas fa-lg fa-search' aria-hidden='true'></i> Pour plus de données (plus d'éditeurs ou pour descendre au niveau du journal), les données fines sont disponibles en <strong> <a target='_blank' href='https://data.enseignementsup-recherche.gouv.fr/explore/dataset/open-access-monitor-france/table/?disjunctive.oa_host_type&disjunctive.year'> open data</a></strong>."}
 translation['publisher-caption']['EN'] = "<i class='fas fa-lg fa-search' aria-hidden='true'></i> For more data (more publishers or to go down to the journal level), the fine-grained data are available in <strong> <a target='_blank' href='https://data.enseignementsup-recherche.gouv.fr/explore/dataset/open-access-monitor-france/table/?disjunctive.oa_host_type&disjunctive.year'> open data</a></strong>."
 
+
+// Notes Flash
+translation['notes-flash'] = {'FR': "Notes Flash", 'EN': 'Flash Notes'}
+translation['notes-flash-intro'] = {'FR': "Les Notes Flash publiées pour chaque édition du BSO :", 'EN': 'The Flash Notes published for each edition of the French Open Science Monitor:'}
+translation['nf-bso-2018']={}
+translation['nf-bso-2018']['FR'] =  "<a target='_blank' href='https://www.enseignementsup-recherche.gouv.fr/cid146139/barometre-francais-de-la-science-ouverte.html'> Edition 2018 du BSO</a>"
+translation['nf-bso-2018']['EN'] =  "<a target='_blank' href='https://www.enseignementsup-recherche.gouv.fr/cid146139/barometre-francais-de-la-science-ouverte.html'> BSO 2018</a>"
+
+translation['nf-bso-2019']={}
+translation['nf-bso-2019']['FR'] =  "<a target='_blank' href='https://www.enseignementsup-recherche.gouv.fr/cid148931/barometre-francais-de-la-science-ouverte.html'> Edition 2019 du BSO</a>"
+translation['nf-bso-2019']['EN'] =  "<a target='_blank' href='https://www.enseignementsup-recherche.gouv.fr/cid148931/barometre-francais-de-la-science-ouverte.html'> BSO 2019</a>"
+
+translation['nf-bso-2020']={}
+translation['nf-bso-2020']['FR'] =  "Edition 2020 du BSO (lien à venir)"
+translation['nf-bso-2020']['EN'] =  "BSO 2020"
+
+translation['bso-flyer']={}
+translation['bso-flyer']['FR'] =  "<a target='_blank' href='./Flyer_BSO.pdf'> Présentation synthétique du BSO (flyer) </a>"
+translation['bso-flyer']['EN'] =  "<a target='_blank' href='./Flyer_BSO.pdf'> BSO summary presentation (flyer) </a>"
 
 
 // FAQ

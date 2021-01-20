@@ -1,10 +1,14 @@
 var baseUrl = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=open-access-monitor-france"
-var url_year_oa = baseUrl + "&rows=0&facet=oa_host_type_year"
+var urlEnd = ""
+//var baseUrl = "https://data.enseignementsup-recherche.gouv.fr/api/records/1.0/search/?dataset=barometre-de-la-science-ouverte-copie"
+//var urlEnd = "&apikey=1824d00a96bec360bab372a28f742c4bb79cd86aad24f69e66f87cbb"
+var url_year_oa = baseUrl + "&rows=0&facet=oa_host_type_year" + urlEnd
 var url_year_oa_field = baseUrl + "&facet=oa_host_type_year_scientific_field&refine.scientific_field="
-var url_oa_genre = baseUrl + "&facet=oa_host_type_genre&refine.year=2018"
-var url_oa_publisher = baseUrl + "&facet=oa_host_type_publisher&refine.publisher=Elsevier BV&refine.publisher=Springer Nature&refine.publisher=Wiley-Blackwell&refine.publisher=OpenEdition&refine.publisher=Springer International Publishing&refine.publisher=Informa UK Limited&refine.publisher=CAIRN&refine.publisher=EDP Sciences&refine.publisher=American Chemical Society (ACS)&refine.publisher=IOP Publishing&refine.publisher=IEEE&disjunctive.publisher=true&refine.year=2018"
+var url_oa_genre = baseUrl + "&facet=oa_host_type_genre&refine.year=2019" + urlEnd
+var url_oa_publisher = baseUrl + "&facet=oa_host_type_publisher&refine.publisher=Elsevier BV&refine.publisher=Springer Science and Business Media LLC&refine.publisher=Wiley&refine.publisher=OpenEdition&refine.publisher=Springer International Publishing&refine.publisher=Informa UK Limited&refine.publisher=CAIRN&refine.publisher=EDP Sciences&refine.publisher=American Chemical Society (ACS)&refine.publisher=Oxford University Press (OUP)&refine.publisher=IEEE&disjunctive.publisher=true&refine.year=2019" + urlEnd
 //var url_oa_publisher = baseUrl + "&facet=oa_host_type_publisher&refine.publisher=CAIRN&disjunctive.publisher=true&refine.year=2018"
-var url_oa_field = baseUrl + "&facet=oa_host_type_scientific_field&refine.year=2018"
+var url_oa_field = baseUrl + "&facet=oa_host_type_scientific_field&refine.year=2019" + urlEnd
+var url_oa_repo = baseUrl + "&facet=repositories&refine.year=2019" + urlEnd
 
 var color_repository = '#61cdbb';
 var color_publisher = '#f1e15b';
@@ -103,6 +107,15 @@ function refresh_data_field(lang) {
 	}
   });
 }
+function refresh_data_repo(lang) {
+//  url_to_use = url_oa_field + $('#year_selection_field').val()
+  url_to_use = url_oa_repo
+  $.ajax({ url: url_to_use,
+        success: function(data){
+		draw_graph_repo(data, lang)
+	}
+  });
+}
 
 
 function format_data(data, facet_name, add_count = true){
@@ -158,8 +171,8 @@ function format_data(data, facet_name, add_count = true){
     if ('unknown' in count_oa_label_host[label]) {
       nb_unknown = count_oa_label_host[label]['unknown'];
     }
-    if ('closed access' in count_oa_label_host[label]) {
-      nb_closed = count_oa_label_host[label]['closed access']
+    if ('closed' in count_oa_label_host[label]) {
+      nb_closed = count_oa_label_host[label]['closed']
     }
     nb_oa = nb_repository + nb_publisher + nb_publisherAndrepo + nb_unknown
     nb_total = nb_repository + nb_publisher + nb_publisherAndrepo + nb_unknown + nb_closed
@@ -190,6 +203,32 @@ function draw_graph_genre(data, lang) {
     closed_access = data_formatted['closed']
    graph_genre = hc_treemap('container_genre', labels, oa_repository, oa_publisher, oa_publisherAndrepo, oa_unknown, closed_access, translation['title_graph_genre'][lang], lang, graph_height_1)
 }
+function draw_graph_repo(data, lang) {
+      data_formatted = []
+      var k = 0;
+      for (i = 0; i < data['facet_groups'].length; i++) {
+	      if (data['facet_groups'][i]['name'] === 'repositories') {
+	      k = i
+	      }
+      }
+
+      for (i = 0; i < data['facet_groups'][k]['facets'].length; i++) {
+       data_formatted.push(
+	       {
+		       'name': data['facet_groups'][k]['facets'][i]['name'], 
+		       'value': data['facet_groups'][k]['facets'][i]['count'],
+		       'color': Highcharts.getOptions().colors[(i+1)%10]
+	       })
+            //{
+            //    name: 'Other',
+           //     y: 7.61,
+           //     dataLabels: {
+           //         enabled: false
+           //     }
+            }
+   graph_repo = hc_repo('container_repo', data_formatted, translation['title_graph_repo'][lang], lang, graph_height_1)
+}
+
 function draw_graph_field(data, lang) {
     data_formatted = format_data(data, "oa_host_type_year_scientific_field")
     labels = data_formatted['labels']
@@ -214,7 +253,7 @@ function draw_graph_year(data, lang) {
  // var scientific_field_title = "(" + $('#scientific_field_selection :selected').text() + ")"
  // var scientific_field_title = ""
  // if ($('#scientific_field_selection').val() === 'all') {scientific_field_title = '(toutes disciplines)'}
-    data_formatted = format_data(data, "oa_host_type_year")
+    data_formatted = format_data(data, "oa_host_type_year", add_count=false)
     labels = data_formatted['labels']
     oa_repository = data_formatted['oa_repository']
     oa_publisher = data_formatted['oa_publisher']
@@ -249,6 +288,8 @@ function draw_graph_year(data, lang) {
         },
     }]
 
+  annotations = null;
+
 
    graph_year = hc('container_year', labels, oa_unknown, oa_publisher, oa_publisherAndrepo, oa_repository, translation['title_graph_year'][lang], "column", lang, graph_height_1, annotations, caption="",margin_bottom = 150)
 }
@@ -257,7 +298,7 @@ function draw_graph_year(data, lang) {
 function draw_sunburst_year(data, lang){
 
     data_formatted = format_data(data)
-    year_index = 5 // here to change year displayed !
+    year_index = 6 // here to change year displayed !
     year = data_formatted['labels'][year_index]
     oa_repository = data_formatted['oa_repository'][year_index]
     oa_publisher = data_formatted['oa_publisher'][year_index]
@@ -266,6 +307,31 @@ function draw_sunburst_year(data, lang){
     closed_access = data_formatted['closed'][year_index]
     oa_all = data_formatted['oa'][year_index]
     graph_sunburst = hc_sunburst('container_sunburst', year, oa_repository, oa_publisher, oa_publisherAndrepo, oa_unknown, oa_all, closed_access, translation['title_graph_sunburst'][lang], lang)
+}
+
+function hc_repo(container_name, data, current_title, lang, graph_height){
+	current_chart = Highcharts.chart(container_name, {
+
+    chart: {
+        height: graph_height
+    },
+
+    title: {
+        text: current_title
+    },
+    subtitle: {
+            text: translation['subtitle_graph'][lang]
+    },
+    credits: {
+            enabled: false
+    },
+    series: [{
+	type: 'treemap',
+	layoutAlgorithm: 'squarified',
+        data: data
+    }]
+});
+	return current_chart;
 }
 
 
@@ -347,7 +413,7 @@ current_chart = Highcharts.chart(container_name, {
     },
     series: [{
         type: "treemap",
-	    layoutAlgorithm: 'stripes',
+	layoutAlgorithm: 'stripes',
         alternateStartingDirection: true,
         levels: [{
             level: 1,
@@ -382,7 +448,7 @@ return current_chart;
 
 
 function hc_sunburst(container_name, year, oa_repository, oa_publisher, oa_publisherAndrepo, oa_unknown, oa_all, closed_access, current_title, lang){
-var data = [
+var data_sunburst = [
 {
     id: '0.0',
     parent: '',
@@ -474,6 +540,57 @@ var data = [
     color:color_closed
 }];
 
+var data =  [
+{
+    id: '2.0',
+    name: translation['closed-access'][lang],
+    value: closed_access['y'],
+    abs_value: closed_access['y_abs'],
+    total: closed_access['y_tot'],
+    color:color_closed
+},
+{
+    id: '0.0',
+    color: color_oa,
+    borderColor: color_oa,
+    //dataLabels: {align: 'left'},
+    name: translation['open-access'][lang],
+},
+{
+    id: '1.1',
+    parent: '0.0',
+    name: translation['host-publisher'][lang],
+    color: color_publisher,
+    value: oa_publisher['y'],
+    abs_value: oa_publisher['y_abs'],
+    total: oa_publisher['y_tot']
+}, {
+    id: '1.2',
+    parent: '0.0',
+    name: translation['host-publisherAndrepo'][lang],
+    color: color_publisherAndrepo,
+    value: oa_publisherAndrepo['y'],
+    abs_value: oa_publisherAndrepo['y_abs'],
+    total: oa_publisherAndrepo['y_tot']
+}, {
+    id: '1.3',
+    parent: '0.0',
+    name: translation['host-archive'][lang],
+    color: color_repository,
+    value: oa_repository['y'],
+    abs_value: oa_repository['y_abs'],
+    total: oa_repository['y_tot']
+}, {
+    id: '1.4',
+    parent: '0.0',
+    name: translation['host-unknown'][lang],
+    color: color_unknown,
+    value: oa_unknown['y'],
+    abs_value: oa_unknown['y_abs'],
+    total: oa_unknown['y_tot']
+}
+];
+
 Highcharts.getOptions().colors.splice(0, 0, '#f8f9fa');
 
 current_chart = Highcharts.chart(container_name, {
@@ -492,22 +609,36 @@ current_chart = Highcharts.chart(container_name, {
 	    enabled: false
     },
     series: [{
-        type: "sunburst",
+        type: "treemap",
         data: data,
         allowDrillToNode: false,
         cursor: 'pointer',
-	levels:[{
-            level:3,
-            levelSize: {
-                unit: 'weight',
-                value: 1.3
+	layoutAlgorithm: 'strip',
+        alternateStartingDirection: true,
+        levels: [{
+            level: 1,
+            dataLabels: {
+                enabled: true,
+                align: 'left',
+                verticalAlign: 'top',
+                style: {
+                    fontSize: '15px',
+                    fontWeight: 'bold'
+                }
             }
-	}],
+        }],
+	//levels:[{
+//            level:3,
+//            levelSize: {
+//                unit: 'weight',
+//                value: 1.3
+ //           }
+//	}],
         dataLabels: {
 	    format: '{point.name}<br>{point.value:.0f} %',
             rotationMode: 'auto',
 	    filter: {
-                property: 'name',
+                property: 'value',
                 operator: '>',
                 value: '3'
             }
