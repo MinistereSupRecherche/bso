@@ -1,6 +1,11 @@
 import requests
 import pandas as pd
 
+def dedup_sort(x):
+    y = list(set([e for e in x if e]))
+    y.sort()
+    return y
+
 def get_upw_info(doi):
     r = requests.get("https://api.oadoi.org/v2/{}?email=unpaywall@impactstory.org".format(doi))
     try:
@@ -8,12 +13,34 @@ def get_upw_info(doi):
     except:
         return {}
 
-    oa_type = 'closed'
-    oa_locations = res.get('oa_locations', [])
-    if len(oa_locations) > 0:
-        locations = list(set([loc['host_type'] for loc in oa_locations]))
-        locations.sort()
-        oa_type = ";".join(locations)
+    oa_loc = res.get('oa_locations', [])
+    host_types, repositories = [], []
+
+    # loop over the oa locations to detect all the host types and all the repositories
+    for loc in oa_loc:
+        if loc is None:
+            continue
+        host_type = loc.get('host_type')
+        host_types.append(host_type)
+
+        if host_type == 'repository':
+            current_repo = loc['url'].split('/')[2]
+            if current_repo == 'doi.org':
+                continue
+            if 'hal' in current_repo.lower():
+                current_repo = 'HAL'
+            repositories.append(current_repo)
+
+    host_types = dedup_sort(host_types)
+    repositories = dedup_sort(repositories)
+
+    if len(host_types) > 0:
+        oa_type = ";".join(host_types)
+    else:
+        oa_type = 'closed'
+
+    repositories = ";".join(repositories)
+
     return {
             "oa_type": oa_type,
             "is_oa" : res.get('is_oa', False),
@@ -25,7 +52,8 @@ def get_upw_info(doi):
             "journal_is_in_doaj" : res.get("journal_is_in_doaj"),
             "journal_issns" : res.get("journal_issns"),
             "journal_name" : res.get("journal_name"),
-            "publisher" : res.get("publisher")
+            "publisher" : res.get("publisher"),
+            "repositories" : repositories
             }
     
 def enrich_with_upw_status(df):
