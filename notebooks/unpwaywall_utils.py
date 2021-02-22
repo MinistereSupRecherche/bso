@@ -7,6 +7,8 @@ def dedup_sort(x):
     return y
 
 def get_upw_info(doi):
+    if pd.isnull(doi):
+        return {}
     r = requests.get("https://api.oadoi.org/v2/{}?email=unpaywall@impactstory.org".format(doi))
     try:
         res = r.json()
@@ -49,7 +51,7 @@ def get_upw_info(doi):
             "published_year" : res.get('year'),
             "genre" : res.get("genre"),
             "journal_is_in_doaj": res.get("journal_is_in_doaj"),
-            "journal_is_in_doaj" : res.get("journal_is_in_doaj"),
+            "journal_is_oa" : res.get("journal_is_oa"),
             "journal_issns" : res.get("journal_issns"),
             "journal_name" : res.get("journal_name"),
             "publisher" : res.get("publisher"),
@@ -57,6 +59,9 @@ def get_upw_info(doi):
             }
     
 def enrich_with_upw_status(df):
+
+    if 'DOI' in df:
+        df['doi'] = df['DOI']
 
     if 'doi' not in df:
         print("The input dataframe should have a column named 'doi'.")
