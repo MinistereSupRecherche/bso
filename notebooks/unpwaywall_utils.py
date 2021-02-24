@@ -68,11 +68,15 @@ def enrich_with_upw_status(df):
         return df
 
     nb_publis = len(df)
+    enriched_data = []
     print("{} publications".format(nb_publis))
-    for row in df.itertuples():
-        if row.Index % 50 == 0:
-            print("{} %".format(round(100 * row.Index / nb_publis)), end=', ')
+    for ix, row in df.iterrows():
+        if ix % 50 == 0:
+            print("{} %".format(round(100 * ix / nb_publis)), end=', ')
         upw_info = get_upw_info(row.doi)
-        for field in upw_info:
-            df.at[row.Index, field] = upw_info[field]
-    return df
+        enriched_data_elt = row.to_dict()
+        enriched_data_elt.update(upw_info)
+        enriched_data.append(enriched_data_elt)
+
+    enriched_df = pd.DataFrame(enriched_data)
+    return enriched_df
