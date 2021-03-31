@@ -7,7 +7,7 @@ gunicorn==19.9.0
 eve==0.8.1
 eve-swagger==0.0.11
 python-dateutil==2.7.3
-lxml==4.2.5
+lxml==4.6.3
 beautifulsoup4==4.6.3
 redis==3.2.0
 celery[mongodb]==4.2
