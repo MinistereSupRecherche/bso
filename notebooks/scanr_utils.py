@@ -39,7 +39,7 @@ def get_all_structures(structure_id, verbose = False):
         print("Structures identifiées dans le périmètre : \n {}".format(", ".join(all_structures_dedup)))
     return all_structures_dedup
 
-def get_publications_one_year(structure, year_start, verbose = False):
+def get_publications_one_year(structure, year_start, verbose = False, doi_only=True):
     structures = get_all_structures(structure, verbose)
     url = SCANR_API_BASE+"publications/search"
     params = {"pageSize":10000,
@@ -54,12 +54,16 @@ def get_publications_one_year(structure, year_start, verbose = False):
     res = r.json()['results']
     publi_with_doi = []
     for p in res:
+        has_doi = False
         if 'doi' in p['value']['id']:
+            has_doi = True
             p['value']['doi'] = p['value']['id'].replace('doi','')
             del p['value']['id']
-            p['value']['title'] = p['value']['title']['default']
-            if 'isOa' in p['value']:
-                del p['value']['isOa']
+        p['value']['title'] = p['value']['title']['default']
+        if 'isOa' in p['value']:
+            del p['value']['isOa']
+        
+        if (not doi_only) or (doi_only and has_doi):
             publi_with_doi.append(p['value'])       
     if verbose:
         print("dont {} avec un DOI".format(len(publi_with_doi)))

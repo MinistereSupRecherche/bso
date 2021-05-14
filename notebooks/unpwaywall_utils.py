@@ -1,5 +1,28 @@
 import requests
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry
+
 import pandas as pd
+
+
+def requests_retry_session(
+    retries=3,
+    backoff_factor=0.3,
+    status_forcelist=(500, 502, 504),
+    session=None,
+):
+    session = session or requests.Session()
+    retry = Retry(
+        total=retries,
+        read=retries,
+        connect=retries,
+        backoff_factor=backoff_factor,
+        status_forcelist=status_forcelist,
+    )
+    adapter = HTTPAdapter(max_retries=retry)
+    session.mount('http://', adapter)
+    session.mount('https://', adapter)
+    return session
 
 def dedup_sort(x):
     y = list(set([e for e in x if e]))
@@ -9,8 +32,8 @@ def dedup_sort(x):
 def get_upw_info(doi):
     if pd.isnull(doi):
         return {}
-    r = requests.get("https://api.oadoi.org/v2/{}?email=unpaywall@impactstory.org".format(doi))
     try:
+        r = requests_retry_session().get("https://api.oadoi.org/v2/{}?email=unpaywall@impactstory.org".format(doi))
         res = r.json()
     except:
         return {}
