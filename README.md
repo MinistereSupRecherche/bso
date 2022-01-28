@@ -1,3 +1,7 @@
+Warning: this repo is no longer used.
+A new version of the French Open Science Monitor is online since the 28th of January 2022: https://barometredelascienceouverte.esr.gouv.fr/
+The code source is now splitted in modules: https://github.com/orgs/dataesr/repositories?q=bso&type=&language=&sort=
+
 # Open Access Monitoring for France
 
 A complete description of the methodology and results can be found in the article <https://hal.archives-ouvertes.fr/hal-02141819>
